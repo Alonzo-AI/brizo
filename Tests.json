@@ -1,0 +1,45 @@
+{
+    "name" : "Test LMI",
+    "nodes" : [
+    {
+     "type" : "action",
+    "command" : "Open https://lmidemo.netlify.app"
+    },
+    {
+    "type" : "test",
+    "command" : "The content of header of the page should be \"Choose Your Insurance Coverage\""
+    },
+    {
+    "type": "action",
+    "command": "Select Auto Insurance"
+    },
+    {
+    "type": "test",
+    "command": "The content should be \"Selected: Auto Insurance\""
+    },
+    {
+    "type": "action",
+    "command": "Click on \"Continue\""
+    },
+    {
+    "type": "action",
+    "command": "Fill the 5-digit ZIP code \"12345\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the business name \"qwerty\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the business description or code \"wertju\""
+    },
+    {
+    "type": "action",
+    "command": "Click on \"Start quote\""
+    },
+    {
+        "type": "test",
+        "command": "The page should navigate to Account Information with header \"Account information\""
+    }
+]
+}
