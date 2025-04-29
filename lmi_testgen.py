@@ -102,7 +102,9 @@ def clean_generated_code(code: str,idx:int) -> str:
     code = re.sub(r"", "", code)
     code = re.sub(r"```", "", code)
     # Extract only the function definition
-    function_match = re.search(r"def f\d+\(page: Page\):.*?(?=def|\Z)", code, re.DOTALL)
+    #function_match = re.search(r"def f\d+\(page: Page\):.*?(?=def|\Z)", code, re.DOTALL)
+    function_match = re.search(r"def f\d+\(page(?:: Page)?\):.*?(?=^def|\Z)", code, re.DOTALL | re.MULTILINE)
+
     if function_match:
         code = function_match.group(0).strip()
     else:
@@ -112,7 +114,7 @@ def clean_generated_code(code: str,idx:int) -> str:
         inside_function = False
         
         for line in lines:
-            if (line.strip().startswith("def f") and "page: Page" in line) or (line.strip().startswith("def f") and "page: Page" in line):
+            if (line.strip().startswith("def f") and "page: Page" in line) or (line.strip().startswith("def f") and "page" in line):
                 inside_function = True
                 function_lines.append(line)
             elif inside_function:
@@ -124,7 +126,7 @@ def clean_generated_code(code: str,idx:int) -> str:
         code = "\n".join(function_lines).strip()
     return code
 
-def extract_html_from_url(page: Page, url: str):
+def extract_html_from_url(page, url: str):
     if not url:
         print("⚠️ No URL available to fetch HTML.")
         return ""
@@ -172,8 +174,9 @@ def regenerate_run_all_tests(upto: int):
         content = f.read()
 
     # Extract all defined test functions (e.g., f1, f2, ...)
-    function_matches = re.findall(r"def (f\d+)\(page: Page\):", content)
+    function_matches = re.findall(r"def (f\d+)\(page(?:: Page)?\):", content)
     function_matches = sorted(function_matches, key=lambda x: int(x[1:]))
+
 
     # Start constructing the new run_all_tests block
     run_all_tests = "def run_all_tests(upto=999):\n"
@@ -317,8 +320,8 @@ def main():
         
         try:
             # Run the test with a timeout to avoid hanging
-            #subprocess.run(["python", "json_tester.py", str(idx)], timeout=300)
-            subprocess.run(["C:/Users/HP/Desktop/Brizo/venvv/Scripts/python.exe", "json_tester.py", str(idx)], timeout=100)
+            subprocess.run(["python", "json_tester.py", str(idx)], timeout=300)
+            #subprocess.run(["C:/Users/HP/Desktop/Brizo/venvv/Scripts/python.exe", "json_tester.py", str(idx)], timeout=100)
         except subprocess.TimeoutExpired:
             print(f"⚠️ Test execution timed out for f{idx}")
 
