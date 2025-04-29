@@ -67,19 +67,11 @@
     },
     {
       "type": "action",
-      "command": "Check the box if mailing address is different than the primary location address"
-    },
-    {
-      "type": "action",
       "command": "Enter the phone number \"123-456-7890\""
     },
     {
       "type": "action",
       "command": "Select the legal entity \"LLC\""
-    },
-    {
-      "type": "action",
-      "command": "Click on \"Add another entity as named insured\""
     },
     {
       "type": "action",
@@ -116,6 +108,74 @@
     {
         "type": "action",
         "command": "Click on \"Save and continue\" button"
-    }
+    },
+    {
+      "type" :"test",
+      "command" : "The content should be \"Business Information\""
+    },
+      {
+        "type": "action",
+        "command": "Select the business description \"Candle Or Candleholders Mfrers (SIC No. 3999)\""
+      },
+      {
+        "type": "action",
+        "command": "Select \"Yes\" for the question about 2 or more moving violations"
+      },
+      {
+        "type": "action",
+        "command": "Select \"No\" for the question about supporting policy with Liberty Mutual"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"2010\" for year business founded"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"5\" for number of full-time employees"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"2\" for number of part-time employees"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"1\" for number of seasonal employees"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"John\" as First name"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"Doe\" as Last name"
+      },
+      {
+        "type": "action",
+        "command": "Select \"01/01/1980\" for Date of Birth"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"123 Main St\" as Home Address"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"Phoenix\" as City"
+      },
+      {
+        "type": "action",
+        "command": "Select \"AZ\" as State"
+      },
+      {
+        "type": "action",
+        "command": "Enter \"85001\" as ZIP Code"
+      },
+      {
+        "type": "action",
+        "command": "Select \"Yes\" for adding principal business owner as a driver"
+      },
+      {
+        "type": "action",
+        "command": "Click on \"Save and continue\" button"
+    }    
   ]
 }
