@@ -1,145 +1,260 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account &amp; Business Information</title>
+    <title>Auto Policy Flow</title>
     
 </head>
 <body>
-    <div class="container">
-        <div class="main-form">
-            <h1>Account information</h1>
-            <p class="required-note">Items marked with * are required.</p>
-            
-            <h2>Business information</h2>
-            
-            <div class="form-group">
-                <label class="form-label required-field" for="business-name">First named insured's legal business name</label>
-                <input type="text" id="business-name" class="form-input">
-                <div class="form-sublabel">Legal business name of the first named insured as filed with the Secretary of State</div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="dba-name">Doing business as (DBA) name</label>
-                <input type="text" id="dba-name" class="form-input">
-                <div class="form-sublabel">Typically on signage, website, and marketing</div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-column">
-                    <label class="form-label required-field" for="street-address">Primary location street address</label>
-                    <input type="text" id="street-address" class="form-input">
-                </div>
-                <div class="form-column">
-                    <label class="form-label" for="unit-number">Apt./Suite/Unit number</label>
-                    <input type="text" id="unit-number" class="form-input">
-                </div>
-            </div>
+
+    <div class="layout-wrapper">
+        <!-- Policy Box Sidebar -->
+        <div class="policy-sidebar">
+          <div class="section-header">Policy Information</div>
+          <div>AUTO POLICY#725</div>
+          <div>Account # 00053376</div>
+          <div style="margin-top: 10px;">
+              <span class="business-icon"></span>
+              <span>Business Auto</span>
+          </div>
+        </div>
+
+        
+    <div class="document">
+
+        <!-- Business Information Section - Separated into its own box -->
+        <div class="section">
+            <div class="section-header">Business information</div>
+            <div class="section-subheader">Items marked with * are required</div>
             
             <div class="form-row">
-                <div class="form-column">
-                    <label class="form-label required-field" for="city">City</label>
-                    <input type="text" id="city" class="form-input">
+                <div class="form-group">
+                    <label for="business-desc" class="required">Business description or SIC</label>
+                    <select id="business-desc">
+                        <option value="">-- Select --</option>
+                        <option>Candle Or Candleholders Mfrers (SIC No. 3999)</option>
+                    </select>
                 </div>
-                <div class="form-column">
-                    <label class="form-label required-field" for="state">State</label>
-                    <div class="select-dropdown">
-                        <select id="state" class="form-input">
-                            <option value="">-- Select State --</option>
-                            <option value="AZ">AZ</option>
-                            <option value="AL">AL</option>
-                            <option value="AK">AK</option>
-                            <option value="AR">AR</option>
-                            <option value="CA">CA</option>
-                        </select>
-                        
+                <div style="width: 80px; margin-top: 20px;">
+                    <button class="reset-btn">Reset</button>
+                </div>
+            </div>
+
+            <div class="add-line">
+                <div class="add-icon">+</div> Add a Line of Business
+            </div>
+        </div>
+            
+            <!-- Eligibility Details Section - Separated into its own box -->
+            <div class="section">
+                <div class="section-header">Eligibility details</div>
+                <div class="section-subheader">Items marked with * are required</div>
+    
+                <div class="eligibility-question">
+                    Has the customer had 2 or more moving violations or convictions or 2 or more non-negligent accidents within the last 3 years?
+                </div>
+    
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="violations"> Yes
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="violations"> No
+                    </label>
+                </div>
+    
+                <div class="eligibility-question" style="margin-top: 15px;">
+                    Is a supporting policy such as BOP, Package, ML, Property, or Form being quoted or already written with Liberty Mutual?
+                </div>
+    
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="supporting-policy"> Yes
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="supporting-policy"> No
+                    </label>
+                </div>
+    
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="year-founded">Year business founded</label>
+                    <input type="text" id="year-founded">
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fulltime-employees">How many full-time employees do you have?</label>
+                        <input type="text" id="fulltime-employees">
                     </div>
                 </div>
-                <div class="form-column">
-                    <label class="form-label required-field" for="zip-code">ZIP Code</label>
-                    <input type="text" id="zip-code" class="form-input">
+    
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="part-time-employees">How many part-time employees?</label>
+                        <input type="text" id="part-time-employees">
+                    </div>
+                    <div class="form-group">
+                        <label for="seasonal-employees">How many seasonal employees?</label>
+                        <input type="text" id="seasonal-employees">
+                    </div>
+                </div>
+            </div>
+    
+              <div class="note">
+                  Full-time employees are employees, active owners, and leased workers working more than 150 days over the next 12 months.
+                  Part-time employees are employees and leased workers working 150 days or fewer over the next 12 months. For contractors
+                  and seasonal employees, do not include manual or labor employees.
+              </div>
+
+              <!-- Principal Business Owner Section -->
+        <div class="section">
+            <div class="section-header">Principal business owner</div>
+            <div class="section-subheader">Items marked with * are required</div>
+            
+            <div style="margin-top: 15px;">
+                <div class="section-header" style="font-size: 16px;">Credit score authorization</div>
+                
+                <div class="small-text" style="margin-bottom: 10px;">
+                    Please provide the following disclosure to the business owner whose credit-based insurance score will be ordered for this quote.
+                </div>
+                
+                <div class="small-text" style="margin-bottom: 10px;">
+                    The agent must provide the following disclosure to the business owner whose credit-based insurance score will be ordered for the
+                    quote. In connection with this application, Liberty Mutual will order your credit-based insurance score from a third party, which is
+                    based on information contained in your credit report. This information will also be used for future renewals of your policy and may
+                    affect your premium. If permitted by applicable law, you can request a review and update to your credit-based insurance score, if there are
+                    errors in your credit rating. By your selection, you authorize the use of this information.
+                </div>
+                
+                <div class="radio-group" style="margin-top: 15px;">
+                    <label class="radio-option">
+                        <input type="radio" name="credit-auth" checked=""> Yes
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="credit-auth"> No
+                    </label>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label class="form-label required-field" for="fire-district">Fire District</label>
-                <div class="select-dropdown">
-                    <select id="fire-district" class="form-input">
-                        <option value="">-- Select District --</option>
-                        <option value="PHOENIX FPSA">PHOENIX FPSA</option>
-                        <option value="OTHER">OTHER</option>
-                    </select>
-                    
-                </div>
-            </div>
-            
-            <div class="checkbox-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" class="checkbox-input" id="different-mailing">
-                    Mailing address is different than the primary location address
-                </label>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label required-field" for="phone-number">Phone number</label>
-                <input type="tel" id="phone-number" class="form-input">
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label required-field" for="legal-entity">Legal entity</label>
-                <div class="select-dropdown">
-                    <select id="legal-entity" class="form-input">
-                        <option value="">-- Select Entity --</option>
-                        <option value="Association">Association</option>
-                        <option value="Corporation">Corporation</option>
-                        <option value="Individual">Individual</option>
-                        <option value="LLC">LLC</option>
-                        <option value="Partnership">Partnership</option>
-                    </select>
-                    
-                </div>
-            </div>
-            
-            <div class="checkbox-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" class="checkbox-input" id="add-entity">
-                    Add another entity as named insured
-                </label>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="agency">Agency</label>
-                <div class="agency-search">
-                   
-                </div>
-                <div class="search-result">
-                   
-                </div>
-            </div>
-            
-            <div class="buttons-row">
-                <button type="button" class="btn btn-secondary">Back</button>
-                <button type="button" class="btn">Next</button>
+            <div class="add-line">
+                <div class="add-icon">+</div> Add a Line of Business
             </div>
         </div>
         
-        <div class="sidebar">
-            <div class="policy-info">
-                <div class="policy-number">AUTO POLICY41725</div>
-                <div class="account-number">Account #: 98203376</div>
+        <!-- Principal Business Owner Details Section (New) -->
+        <div class="owner-details-section">
+            <div class="section-header">Principal business owner details</div>
+            <div class="section-subheader">Items marked with * are required</div>
+            <div class="small-text">Please complete for the person...</div>
+
+            <label class="checkbox-label">
+                <input type="checkbox"> Information is the same as business/DBA named insured
+            </label>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name" class="required">First name</label>
+                    <input type="text" id="first-name">
+                </div>
+                <div class="form-group">
+                    <label for="middle-initial">Middle initial</label>
+                    <input type="text" id="middle-initial">
+                </div>
+                <div class="form-group">
+                    <label for="last-name" class="required">Last name</label>
+                    <input type="text" id="last-name">
+                </div>
             </div>
-            
-            <div class="business-item">
-                <div class="business-icon">B</div>
-                <div>
-                    <div class="business-name">Business Auto</div>
-                    <div class="business-status">active</div>
+
+            <div class="form-row">
+        <div class="form-group">
+            <label for="date-of-birth" class="required">Date of Birth</label>
+            <div class="date-picker-container">
+                <input type="text" id="date-of-birth" class="date-input" placeholder="MM/DD/YYYY" readonly="">
+                <div class="calendar" id="dob-calendar" style="display: none;">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" id="prev-month">&lt;</button>
+                        <div class="calendar-title" id="calendar-title">January 1980</div>
+                        <button class="calendar-nav" id="next-month">&gt;</button>
+                    </div>
+                    <div class="month-year-selector">
+                        <select class="month-selector" id="month-selector"><option value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option><option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option></select>
+                        <select class="year-selector" id="year-selector"><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option></select>
+                    </div>
+                    <div class="day-names">
+                        <div class="day-name">Su</div>
+                        <div class="day-name">Mo</div>
+                        <div class="day-name">Tu</div>
+                        <div class="day-name">We</div>
+                        <div class="day-name">Th</div>
+                        <div class="day-name">Fr</div>
+                        <div class="day-name">Sa</div>
+                    </div>
+                    <div class="calendar-days" id="calendar-days"><div class="day other-month">30</div><div class="day other-month">31</div><div class="day selected">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div><div class="day other-month">1</div></div>
                 </div>
             </div>
         </div>
-        
     </div>
 
-    
-    
-    
-    </body></html>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="home-address" class="required">Home Addredd</label>
+                    <input type="text" id="home-address">
+                </div>
+                <div class="form-group">
+                    <label for="apt">Apt./Suite/Unit number</label>
+                    <input type="text" id="apt">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city" class="required">City</label>
+                    <input type="text" id="city">
+                </div>
+                <div class="form-group" style="flex: 0.5;">
+                    <label for="state" class="required">State</label>
+                    <select id="state">
+                        <option value="">-- Select --</option>
+                        <option value="AZ">AZ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="zip" class="required">ZIP Code</label>
+                    <input type="text" id="zip">
+                </div>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <div>Add principal business owner as a driver?*</div>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="owner-as-driver"> Yes
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="owner-as-driver"> No
+                    </label>
+                </div>
+            </div>
+        </div>
+            
+            <div class="warning-text">
+                If you skip the business owner information, the quoted premium will be inaccurate and subject to change because a
+                default will be used for the credit-based insurance score. To finalize the quote and bind the policy, authorization to obtain
+                consumer report information is required.
+            </div>
+        
+            <div class="navigation-buttons">
+                <button class="nav-btn back-btn">Back</button>
+                <button class="nav-btn skip-btn">Skip</button>
+                <button class="nav-btn continue-btn">Save and continue</button>
+            </div>
+
+        </div>
+        
+</div>
+
+     
+
+
+
+</body></html>
