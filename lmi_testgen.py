@@ -5,8 +5,9 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright, Page
 import openai
 
+config = json.loads(open("config.json").read())
 #load_dotenv()
-openai.api_key = "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"
+openai.api_key = config["openai_api_key"]
 
 PROMPT_TEMPLATE = '''You are an expert QA automation engineer.
 Given the HTML of a webpage and a natural language test case description, generate a single Playwright Python test function using the sync API that performs the described task.
@@ -131,20 +132,20 @@ def extract_html_from_url(page, url: str):
     return page.content()
 
 def get_existing_function_count():
-    if not Path("json_tester.py").exists():
+    if not Path(sys.argv[2]).exists():
         return 0
-    with open("json_tester.py") as f:
+    with open(sys.argv[2]) as f:
         return len(re.findall(r"^def f\d+\(", f.read(), re.M))
 
 def ensure_script_header():
-    file_path = "json_tester.py"
+    file_path = sys.argv[2]
     if not Path(file_path).exists():
         with open(file_path, "w") as f:
             f.write("from playwright.sync_api import sync_playwright, Page\nimport time\nimport sys\nfrom pathlib import Path\n\n")
 
 def append_function_to_test_script(new_func: str):
     # Check if the file exists and read its content
-    file_path = "json_tester.py"
+    file_path = sys.argv[2]
     if Path(file_path).exists():
         with open(file_path, "r") as f:
             content = f.read()
@@ -166,7 +167,7 @@ import re
 
 def regenerate_run_all_tests(upto: int):
     # Read the existing test file
-    with open("json_tester.py", "r") as f:
+    with open(sys.argv[2], "r") as f:
         content = f.read()
 
     # Extract all defined test functions (e.g., f1, f2, ...)
@@ -228,7 +229,7 @@ def regenerate_run_all_tests(upto: int):
 
     content = content.strip() + "\n\n" + run_all_tests
     # Rewrite the file with new logic
-    with open("json_tester.py", "w") as f:
+    with open(sys.argv[2], "w") as f:
         f.write(content)
 
 import re
@@ -280,12 +281,12 @@ def generate_function_from_test_node(node, idx, prior_nodes):
 
 def main():
     # Delete existing json_tester.py to start fresh
-    if Path("json_tester.py").exists():
+    if Path(sys.argv[2]).exists():
         try:
-            Path("json_tester.py").unlink()
-            print("Removed existing json_tester.py to start fresh")
+            Path(sys.argv[2]).unlink()
+            print(f"Removed existing {sys.argv[2]} to start fresh")
         except Exception as e:
-            print(f"Warning: Could not remove existing json_tester.py: {e}")
+            print(f"Warning: Could not remove existing {sys.argv[2]}: {e}")
     
     # Also remove any existing HTML file
     if Path("current_html.html").exists():
@@ -315,7 +316,7 @@ def main():
         
         try:
             # Run the test with a timeout to avoid hanging
-            subprocess.run(["python", "json_tester.py", str(idx)], timeout=300)
+            subprocess.run(["python", sys.argv[2], str(idx)], timeout=300)
             #subprocess.run(["C:/Users/HP/Desktop/Brizo/venvv/Scripts/python.exe", "json_tester.py", str(idx)], timeout=100)
         except subprocess.TimeoutExpired:
             print(f"⚠️ Test execution timed out for f{idx}")
