@@ -1,11 +1,7 @@
 import json
 import sys
-import time
-import os
-import re
 import subprocess
 from pathlib import Path
-#from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright, Page
 import openai
 
