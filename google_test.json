@@ -1,0 +1,17 @@
+{
+  "name": "Test Google",
+  "nodes": [
+    {
+      "type": "action",
+      "command": "Open https://www.google.com"
+    },
+    {
+      "type": "action",
+      "command": "Type in 'Alonzo AI' in the search bar"
+    },
+    {
+      "type": "action",
+      "command": "Press Enter"
+    }
+  ]
+}
