@@ -1,0 +1,68 @@
+{
+  "name": "Farmers Insurance Website Test Suite",
+  "nodes": [
+    {
+      "type": "action",
+      "command": "Open https://www.farmers.com"
+    },
+    
+    {
+      "type": "action",
+      "command": "Select 'Auto' from the quote options"
+    },
+    
+    {
+      "type": "action",
+      "command": "Enter ZIP code '90210' into the ZIP code field"
+    },
+    {
+      "type": "action",
+      "command": "Click on 'Get a Quote' button "
+    },
+    {
+        "type": "action",
+        "command": "Enter the first name \"Jason\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the last name \"Dawn\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the Date of birth \"11/10/1990\""
+    },
+    {
+        "type": "action",
+        "command": "Click on \"Continue\""
+    },
+    {
+        "type": "action",
+        "command": "Click on \"Enter your address manually\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the street number and name \"811 N Hillcrest Rd\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the unit# \"12\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the city \"Beverly Hills\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the email address \"jasondawn11@gmail.com\""
+    },
+    {
+        "type": "action",
+        "command": "Enter the mobile phone \"(732) 802-4202\""
+    },
+    {
+        "type": "action",
+        "command": "Click on \"Agree and submit\""
+    }
+  
+  ]
+}
