@@ -25,6 +25,7 @@ pip install -r requirements.txt
 ## Step 1: Test Suites
 
 Edit sample_tests.json:
+
 note: modify website link as required in the tests
 Format
 ```json
@@ -32,7 +33,7 @@ Format
   "name": "Test LMI",
   "custom_tests_file": "my_custom.py",
   "nodes": [
-    { "type": "action", "command": "Open https://lmidemo.netlify.app" },
+    { "type": "action", "command": "Open https://lmidemo.netlify.app" }, #update the website link for testing
     { "type": "action", "command": "Select Auto Insurance" },
     { "type": "custom", "command": "Click continue" },
     { "type": "action", "command": "Fill the 5-digit ZIP code \"12345\"" }
