@@ -3,6 +3,7 @@ import time
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright, Page
@@ -179,9 +180,9 @@ def get_existing_function_count():
         int: The number of existing test functions found in the file.
              Returns 0 if the file does not exist. 
     """
-    if not Path("sample_tester.py").exists():
+    if not Path(sys.argv[2]).exists():
         return 0
-    with open("sample_tester.py") as f:
+    with open(sys.argv[2]) as f:
         return len(re.findall(r"^def f\d+\(", f.read(), re.M))
 
 def ensure_script_header():
@@ -191,7 +192,7 @@ def ensure_script_header():
 
     This helps prepare the test script file for appending generated test functions later on.
     """
-    file_path = "sample_tester.py"
+    file_path = sys.argv[2]
     if not Path(file_path).exists():
         with open(file_path, "w") as f:
             f.write("from playwright.sync_api import sync_playwright, Page\nimport time\nimport sys\nfrom pathlib import Path\nimport my_custom\n")
@@ -213,7 +214,7 @@ def append_function_to_test_script(new_func: str):
         - Then, it appends the new function code at the end of the file with spacing.
     """
     # Check if the file exists and read its content
-    file_path = "sample_tester.py"
+    file_path = sys.argv[2]
     if Path(file_path).exists():
         with open(file_path, "r") as f:
             content = f.read()
@@ -243,7 +244,7 @@ def regenerate_run_all_tests(upto: int, plan=None):
     from pathlib import Path
     
     # Read the existing test file
-    with open("sample_tester.py", "r") as f:
+    with open(sys.argv[2], "r") as f:
         content = f.read()
     
     # Check if my_custom.py exists before trying to read it
@@ -321,7 +322,7 @@ def regenerate_run_all_tests(upto: int, plan=None):
     content = content.strip() + "\n\n" + run_all_tests
 
     # Rewrite the test file
-    with open("sample_tester.py", "w") as f:
+    with open(sys.argv[2], "w") as f:
         f.write(content)
 
 def remove_style_script(html):
@@ -409,12 +410,12 @@ def main():
     - Runs the test script up to the current test, with a timeout to avoid freezes.
     """
     # Delete existing sample_tester.py to start fresh
-    if Path("sample_tester.py").exists():
+    if Path(sys.argv[2]).exists():
         try:
-            Path("sample_tester.py").unlink()
-            print("Removed existing sample_tester.py to start fresh")
+            Path(sys.argv[2]).unlink()
+            print(f"Removed existing {sys.argv[2]} to start fresh")
         except Exception as e:
-            print(f"Warning: Could not remove existing sample_tester.py: {e}")
+            print(f"Warning: Could not remove existing {sys.argv[2]}: {e}")
     
     # Also remove any existing HTML file
     if Path("current_html.html").exists():
@@ -425,7 +426,7 @@ def main():
             print(f"Warning: Could not remove existing current_html.html: {e}")
 
     # Load the test plan
-    with open("sample_tests.json") as f:
+    with open(sys.argv[1]) as f:
         plan = json.load(f)
     # Initialize my_custom.py if it doesn't exist and custom_tests_file is specified
     if "custom_tests_file" in plan and not Path(plan["custom_tests_file"]).exists():
@@ -461,7 +462,8 @@ def main():
         
         try:
             # Run the test with a timeout to avoid hanging
-            subprocess.run(["python", "sample_tester.py", str(idx)], timeout=3000)
+            subprocess.run(["python", sys.argv[2], str(idx)], timeout=300)
+            #subprocess.run(["python", "sample_tester.py", str(idx)], timeout=3000)
         except subprocess.TimeoutExpired:
             print(f"⚠️ Test execution timed out for step {idx}")
 
