@@ -63,8 +63,11 @@ def my_custom_test1(page: Page):
 
 # Step 4 : Creating & running the Playwright Script
 ```bash
-python lmi_testgen.py sample_tests.json
+python lmi_testgen.py sample_tests.json sample_tester.py
 ```
+sample_tests.json: The input JSON file containing your test plan.
+sample_tester.py: The output Python file where Playwright test functions will be generated and executed.
+
 # Running Playwright Script
 python sample_tester.py
 
