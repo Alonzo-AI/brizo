@@ -63,5 +63,6 @@ def my_custom_test1(page: Page):
 ```bash
 python lmi_testgen.py sample_tests.json
 ```
-
+# Running Playwright Script
+python sample_tester.py
 
