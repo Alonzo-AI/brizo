@@ -37,7 +37,7 @@ Ensure no syntax errors, no unclosed strings, proper indentation, and no mixing 
 Avoid reusing variable names unnecessarily.
 Avoid duplicate or redundant actions.
 Keep the code clean and modular."
-Always remember the URL to be used:"\"https://lmidemo.netlify.app\"
+"
 ---
 
 📥 Input:
@@ -263,7 +263,6 @@ def regenerate_run_all_tests(upto: int, plan=None):
     run_all_tests += "        browser = p.chromium.launch(headless=False, slow_mo=500)\n"
     run_all_tests += "        context = browser.new_context()\n"
     run_all_tests += "        page = context.new_page()\n"
-    run_all_tests += "        page.goto(\"https://lmidemo.netlify.app\")\n\n"
 
     # Build the test_functions dictionary based on the original plan order
     run_all_tests += "        test_functions = {\n"
