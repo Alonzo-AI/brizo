@@ -25,6 +25,7 @@ pip install -r requirements.txt
 ## Step 1: Test Suites
 
 Edit sample_tests.json:
+note: modify website link as required in the tests
 Format
 ```json
 {
