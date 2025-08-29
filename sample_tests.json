@@ -1,0 +1,22 @@
+{
+  "name": "Test LMI",
+  "custom_tests_file" : "my_custom.py",
+  "nodes": [
+    {
+      "type": "action",
+      "command": "Open https://lmidemo.netlify.app"
+    },
+    {
+      "type": "action",
+      "command": "Select Auto Insurance" 
+    },
+    {
+      "type": "custom",
+      "command": "Click continue"
+    },
+    {
+      "type": "action",
+      "command": "Fill the 5-digit ZIP code \"12345\""
+    }
+]
+}

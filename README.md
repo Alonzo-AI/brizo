@@ -1,4 +1,18 @@
-# Automated QA using NLP
+# Automated QA using NLP with custom test support
+
+This project automates UI testing for the website using Playwright and OpenAI GPT-based code generation. It supports both standard and custom test commands defined in a JSON test plan.
+
+#  Project Structure
+
+├── sample_tests.json          # JSON test plan with sequential test steps
+
+├── sample_tester.py           # Playwright test script generated dynamically
+
+├── my_custom.py               # Custom test functions written manually
+
+├── lmi_testgen.py             # Main generator script using OpenAI and Playwright
+
+├── class_id_extracter.py      # Utility to extract selectors using OpenAI
 
 ## Installation
 
@@ -10,54 +24,50 @@ pip install -r requirements.txt
 
 ## Step 1: Test Suites
 
-Create or Reuse test suites in `test_suites` directory.
+Edit sample_tests.json:
 
+note: modify website link as required in the tests
 Format
 ```json
 {
-  "name": "Test Google",
+  "name": "Test LMI",
+  "custom_tests_file": "my_custom.py",
   "nodes": [
-    {
-      "type": "action",
-      "command": "Open https://www.google.com"
-    },
-    {
-      "type": "action",
-      "command": "Type in 'Alonzo AI' in the search bar"
-    },
-    {
-      "type": "action",
-      "command": "Press Enter"
-    }
+    { "type": "action", "command": "Open https://lmidemo.netlify.app" }, #update the website link for testing
+    { "type": "action", "command": "Select Auto Insurance" },
+    { "type": "custom", "command": "Click continue" },
+    { "type": "action", "command": "Fill the 5-digit ZIP code \"12345\"" }
   ]
 }
 ```
+Supported node types:
 
-### Note : LMI Demo 
-LMI Mock Website is hosted at https://lmidemo.netlify.app
+    "action": uses GPT to generate Playwright sync code
 
-`test_suites/lmi_demo.json` contains test cases pertaining to that
+    "custom": uses pre-written code from my_custom.py
 
+    "test": for assertions/validation only
 
-## Step 2: Config
+# Step 2 : Insert openai key in lmi_testgen.py
 
-Create a `config.json` file.
-
-```json
-
-{
-  "openai_api_key": "<INSERT OPENAI KEY HERE>"
-}
-
+# Step 3 : Create or reuse my_custom.py
+You can write custom Playwright functions in my_custom.py, such as:
+```python
+def my_custom_test1(page: Page):
+    class_name = class_id_extracter.get_class(page, ".continue-button", "Button with the text 'continue'")
+    my_button = page.query_selector(class_name)
+    if my_button:
+        my_button.click()
+        time.sleep(1)
 ```
 
-## Step 3: Creating the Playwright Script
-
+# Step 4 : Creating & running the Playwright Script
 ```bash
-python lmi_testgen.py test_suites/lmi_demo.json lmi_script.py
+python lmi_testgen.py sample_tests.json sample_tester.py
 ```
+sample_tests.json: The input JSON file containing your test plan.
+sample_tester.py: The output Python file where Playwright test functions will be generated and executed.
 
-## Step 4: Running the Playwright Script
-```bash
-python lmi_script.py
-```
+# Running Playwright Script
+python sample_tester.py
+
